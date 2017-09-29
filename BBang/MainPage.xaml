@@ -1,0 +1,94 @@
+﻿<Page
+    x:Class="BBang.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BBang"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:data="using:BBang.Model"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <CollectionViewSource x:Name="BurgerCVS"  IsSourceGrouped="True" />
+    </Page.Resources>
+
+    <Grid Background="#FF92150F">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.3*"/>
+            <ColumnDefinition Width="0.7*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0" Background="#FFB32011">
+
+        </Grid>
+
+        <Grid Grid.Column="1" Grid.ColumnSpan="2" 
+              VerticalAlignment="Center"
+              Background="Transparent">
+            <StackPanel HorizontalAlignment="Left" Margin="-55,0,0,0">
+                <Image Source="/Assets/mainmenu/gnb_00.png" Width="110"></Image>
+                <Button x:Name="btnMenuHome"  Width="110" Height="79" Margin="0,-2,0,0" Padding="0" BorderThickness="0"
+                        Click="btnMenuHome_Click">
+                    <Image Source="/Assets/mainmenu/gnb_01.png"/>
+                </Button>
+                <Button x:Name="btnMenuBurger"  Width="110" Height="92" Margin="0,-3,0,0" Padding="0" BorderThickness="0"
+                        Click="btnMenuBurger_Click">
+                    <Image Source="/Assets/mainmenu/gnb_02.png"/>
+                </Button>
+                <Button x:Name="btnMenuStore"  Width="110" Height="104" Margin="0,-2,0,0" Padding="0" BorderThickness="0"
+                        Click="btnMenuStore_Click">
+                    <Image Source="/Assets/mainmenu/gnb_03.png"/>
+                </Button>
+                <Button x:Name="btnMenuEvent"  Width="110" Height="89" Margin="0,-2,0,0" Padding="0" BorderThickness="0"
+                        Click="btnMenuEvent_Click">
+                    <Image Source="/Assets/mainmenu/gnb_04.png"/>
+                </Button>
+                <Button x:Name="btnMenuDelivery"  Width="110" Height="110" Margin="0,-2,0,0" Padding="0" BorderThickness="0"
+                        Click="btnMenuDelivery_Click">
+                    <Image Source="/Assets/mainmenu/gnb_05.png"/>
+                </Button>
+                <Image Source="/Assets/mainmenu/gnb_06.png" Margin="0,-2,0,0"  Width="110"></Image>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Column="1" Margin="100,50, 100,50">
+            <controls:DropShadowPanel BlurRadius="8"
+                                      ShadowOpacity="0.7"
+                                      OffsetX="2" OffsetY="2"
+                                      Color="Black"
+                                      VerticalAlignment="Top" HorizontalAlignment="Left">
+                <TextBlock FontWeight="Bold" FontSize="48" FontFamily="consolas" Foreground="GhostWhite">
+                    <Run Text="BURGER"/>
+                    <Run Text="버거" FontSize="24" FontWeight="Light"/>
+                </TextBlock>
+            </controls:DropShadowPanel>
+            <GridView ItemsSource="{Binding Source={StaticResource BurgerCVS}}" Margin="0,80,0,0"
+                      SelectionChanged="lstWhopper_SelectionChanged"
+                      SelectionMode="Single"
+                      ItemContainerStyle="{StaticResource GridViewTransparentItemStyle}">
+                <GridView.ItemTemplate>
+                    <DataTemplate x:Name="BurgerGridViewTemplate" x:DataType="data:Burger">
+                        <Grid Width="122" Height="145">
+                            <Image Source="{x:Bind ImagePath}"/>
+                        </Grid>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+                <GridView.GroupStyle>
+                    <GroupStyle HidesIfEmpty="True">
+                        <GroupStyle.HeaderTemplate>
+                            <DataTemplate x:DataType="data:GroupInfoList">
+                                <Grid Margin="0,20,0,0">
+                                    <TextBlock Margin="0,0,0,0" FontFamily="Calibri" FontSize="18" FontWeight="Bold" 
+                                               Foreground="WhiteSmoke">
+                                        <Run Text="{x:Bind Key}" />
+                                    </TextBlock>
+                                </Grid>
+                            </DataTemplate>
+                        </GroupStyle.HeaderTemplate>
+
+                    </GroupStyle>
+                </GridView.GroupStyle>
+            </GridView>
+        </Grid>
+    </Grid>
+</Page>
