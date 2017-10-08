@@ -11,84 +11,116 @@
 
     <Page.Resources>
         <CollectionViewSource x:Name="BurgerCVS"  IsSourceGrouped="True" />
+
+        <Style x:Key="TextBlockBottomStyle" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="굴림"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="TextTrimming" Value="None"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        
+        
     </Page.Resources>
 
     <Grid Background="#FF92150F">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.3*"/>
-            <ColumnDefinition Width="0.7*"/>
-        </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0" Background="#FFB32011">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.3*"/>
+                <ColumnDefinition Width="0.7*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" Background="#FFB32011">
 
-        </Grid>
+            </Grid>
 
-        <Grid Grid.Column="1" Grid.ColumnSpan="2" 
-              VerticalAlignment="Center"
-              Background="Transparent">
-            <StackPanel HorizontalAlignment="Left" Margin="-55,0,0,0">
-                <Image Source="/Assets/mainmenu/gnb_00.png" Width="110"></Image>
-                <Button x:Name="btnMenuHome"  Width="110" Height="79" Margin="0,-2,0,0" Padding="0" BorderThickness="0"
+            <Grid Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" Background="Transparent">
+                <StackPanel HorizontalAlignment="Left" Margin="-55,0,0,0">
+                    <Image Source="/Assets/mainmenu/gnb_00.png" Width="110"></Image>
+                    <Button x:Name="btnMenuHome"  Width="110" Height="79" Margin="0,-2,0,0" Padding="0" BorderThickness="0"
                         Click="btnMenuHome_Click">
-                    <Image Source="/Assets/mainmenu/gnb_01.png"/>
-                </Button>
-                <Button x:Name="btnMenuBurger"  Width="110" Height="92" Margin="0,-3,0,0" Padding="0" BorderThickness="0"
+                        <Image Source="/Assets/mainmenu/gnb_01.png"/>
+                    </Button>
+                    <Button x:Name="btnMenuBurger"  Width="110" Height="92" Margin="0,-3,0,0" Padding="0" BorderThickness="0"
                         Click="btnMenuBurger_Click">
-                    <Image Source="/Assets/mainmenu/gnb_02.png"/>
-                </Button>
-                <Button x:Name="btnMenuStore"  Width="110" Height="104" Margin="0,-2,0,0" Padding="0" BorderThickness="0"
+                        <Image Source="/Assets/mainmenu/gnb_02.png"/>
+                    </Button>
+                    <Button x:Name="btnMenuStore"  Width="110" Height="104" Margin="0,-2,0,0" Padding="0" BorderThickness="0"
                         Click="btnMenuStore_Click">
-                    <Image Source="/Assets/mainmenu/gnb_03.png"/>
-                </Button>
-                <Button x:Name="btnMenuEvent"  Width="110" Height="89" Margin="0,-2,0,0" Padding="0" BorderThickness="0"
+                        <Image Source="/Assets/mainmenu/gnb_03.png"/>
+                    </Button>
+                    <Button x:Name="btnMenuEvent"  Width="110" Height="89" Margin="0,-2,0,0" Padding="0" BorderThickness="0"
                         Click="btnMenuEvent_Click">
-                    <Image Source="/Assets/mainmenu/gnb_04.png"/>
-                </Button>
-                <Button x:Name="btnMenuDelivery"  Width="110" Height="110" Margin="0,-2,0,0" Padding="0" BorderThickness="0"
+                        <Image Source="/Assets/mainmenu/gnb_04.png"/>
+                    </Button>
+                    <Button x:Name="btnMenuDelivery"  Width="110" Height="110" Margin="0,-2,0,0" Padding="0" BorderThickness="0"
                         Click="btnMenuDelivery_Click">
-                    <Image Source="/Assets/mainmenu/gnb_05.png"/>
-                </Button>
-                <Image Source="/Assets/mainmenu/gnb_06.png" Margin="0,-2,0,0"  Width="110"></Image>
-            </StackPanel>
-        </Grid>
+                        <Image Source="/Assets/mainmenu/gnb_05.png"/>
+                    </Button>
+                    <Image Source="/Assets/mainmenu/gnb_06.png" Margin="0,-2,0,0"  Width="110"></Image>
+                </StackPanel>
+            </Grid>
 
-        <Grid Grid.Column="1" Margin="100,50, 100,50">
-            <controls:DropShadowPanel BlurRadius="8"
+            <Grid Grid.Column="1" Margin="100,50, 100,50">
+                <controls:DropShadowPanel BlurRadius="8"
                                       ShadowOpacity="0.7"
                                       OffsetX="2" OffsetY="2"
                                       Color="Black"
                                       VerticalAlignment="Top" HorizontalAlignment="Left">
-                <TextBlock FontWeight="Bold" FontSize="48" FontFamily="consolas" Foreground="GhostWhite">
+                    <TextBlock FontWeight="Bold" FontSize="48" FontFamily="consolas" Foreground="GhostWhite">
                     <Run Text="BURGER"/>
                     <Run Text="버거" FontSize="24" FontWeight="Light"/>
-                </TextBlock>
-            </controls:DropShadowPanel>
-            <GridView ItemsSource="{Binding Source={StaticResource BurgerCVS}}" Margin="0,80,0,0"
-                      SelectionChanged="lstWhopper_SelectionChanged"
+                    </TextBlock>
+                </controls:DropShadowPanel>
+                <GridView x:Name="gridViewBurger" ItemsSource="{Binding Source={StaticResource BurgerCVS}}" Margin="0,60,0,0"
+                      SelectionChanged="gridViewBurger_SelectionChanged"
                       SelectionMode="Single"
-                      ItemContainerStyle="{StaticResource GridViewTransparentItemStyle}">
-                <GridView.ItemTemplate>
-                    <DataTemplate x:Name="BurgerGridViewTemplate" x:DataType="data:Burger">
-                        <Grid Width="122" Height="145">
-                            <Image Source="{x:Bind ImagePath}"/>
-                        </Grid>
-                    </DataTemplate>
-                </GridView.ItemTemplate>
-                <GridView.GroupStyle>
-                    <GroupStyle HidesIfEmpty="True">
-                        <GroupStyle.HeaderTemplate>
-                            <DataTemplate x:DataType="data:GroupInfoList">
-                                <Grid Margin="0,20,0,0">
-                                    <TextBlock Margin="0,0,0,0" FontFamily="Calibri" FontSize="18" FontWeight="Bold" 
+                      ItemContainerStyle="{StaticResource GridViewTransparentItemStyle}" Style="{StaticResource GridViewBurgerKingStyle}">
+                    <GridView.ItemTemplate>
+                        <DataTemplate x:Name="BurgerGridViewTemplate" x:DataType="data:Burger">
+                            <Grid Width="122" Height="145">
+                                <Image Source="{x:Bind ImagePath}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                    <GridView.GroupStyle>
+                        <GroupStyle HidesIfEmpty="True">
+                            <GroupStyle.HeaderTemplate>
+                                <DataTemplate x:DataType="data:GroupInfoList">
+                                    <Grid Margin="0,20,0,0">
+                                        <TextBlock Margin="0,0,0,0" FontFamily="Calibri" FontSize="18" FontWeight="Bold" 
                                                Foreground="WhiteSmoke">
                                         <Run Text="{x:Bind Key}" />
-                                    </TextBlock>
-                                </Grid>
-                            </DataTemplate>
-                        </GroupStyle.HeaderTemplate>
+                                        </TextBlock>
+                                    </Grid>
+                                </DataTemplate>
+                            </GroupStyle.HeaderTemplate>
 
-                    </GroupStyle>
-                </GridView.GroupStyle>
-            </GridView>
+                        </GroupStyle>
+                    </GridView.GroupStyle>
+                </GridView>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1" Background="#222222">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.3*"/>
+                <ColumnDefinition Width="0.7*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock Text="고객문의" Style="{StaticResource TextBlockBottomStyle}"></TextBlock>
+                <TextBlock Text="|" Width="22" Style="{StaticResource TextBlockBottomStyle}"></TextBlock>
+                <TextBlock Text="이용약관" Style="{StaticResource TextBlockBottomStyle}"></TextBlock>
+                <TextBlock Text="|" Width="22" Style="{StaticResource TextBlockBottomStyle}"></TextBlock>
+                <TextBlock Text="고객문의" Style="{StaticResource TextBlockBottomStyle}"></TextBlock>
+                <TextBlock Text="|" Width="22" Style="{StaticResource TextBlockBottomStyle}"></TextBlock>
+                <TextBlock Text="개인정보처리방침" FontWeight="Bold" Foreground="Red" Style="{StaticResource TextBlockBottomStyle}"></TextBlock>
+            </StackPanel>
+            <TextBlock x:Name="tbCompanyInfo" Grid.Column="1"
+                       TextWrapping="Wrap" FontFamily="NanumGothic" FontWeight="SemiBold"
+                       Style="{StaticResource TextBlockBottomStyle}"/>
         </Grid>
     </Grid>
 </Page>

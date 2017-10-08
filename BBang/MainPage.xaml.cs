@@ -25,6 +25,7 @@ namespace BBang
         public MainPage()
         {
             this.InitializeComponent();
+            tbCompanyInfo.Text = Common.CompanyInfoText;
 
             BurgerDataModel = new DataModel();
 
@@ -46,8 +47,14 @@ namespace BBang
             }
         }
 
-        private void lstWhopper_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void gridViewBurger_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            int index = gridViewBurger.SelectedIndex;
+
+            if (index < 0)
+                return;
+
+            Burger burger = ((GridView)sender).SelectedItem as Burger;
 
         }
     }
