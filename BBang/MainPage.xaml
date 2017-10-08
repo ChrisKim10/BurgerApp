@@ -6,6 +6,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:behaviors="using:Microsoft.Toolkit.Uwp.UI.Animations.Behaviors"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:developerTools="using:Microsoft.Toolkit.Uwp.DeveloperTools"
     xmlns:data="using:BBang.Model"
     mc:Ignorable="d">
 
@@ -28,11 +32,13 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
+
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.3*"/>
                 <ColumnDefinition Width="0.7*"/>
             </Grid.ColumnDefinitions>
+
             <Grid Grid.Column="0" Background="#FFB32011">
                 <local:SubMenu Margin="0,24,0,0" HorizontalAlignment="Center"></local:SubMenu>
 
@@ -63,6 +69,13 @@
                     </Button>
                     <Image Source="/Assets/mainmenu/gnb_06.png" Margin="0,-2,0,0"  Width="110"></Image>
                 </StackPanel>
+                <Image x:Name="ImgCrown" Source="/Assets/Mainmenu/Crown.png" Margin="40,170,0,0"
+                       Stretch="None" 
+                       HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <!--<interactivity:Interaction.Behaviors>
+                        <behaviors:Offset x:Name="Offset" OffsetX="0" OffsetY="0" Duration="1000" Delay="500" AutomaticallyStart="True"/>
+                    </interactivity:Interaction.Behaviors>-->
+                </Image>
             </Grid>
 
             <Grid Grid.Column="1" Margin="100,50, 100,50">
@@ -104,6 +117,10 @@
                     </GridView.GroupStyle>
                 </GridView>
             </Grid>
+            <!--<developerTools:AlignmentGrid Grid.ColumnSpan="2" Opacity="0.1"
+                                          LineBrush="Black"
+                                          HorizontalStep="20"
+                                          VerticalStep="20"/>-->
         </Grid>
         <Grid Grid.Row="1" Background="#222222">
             <Grid.ColumnDefinitions>
@@ -123,5 +140,11 @@
                        TextWrapping="Wrap" FontFamily="NanumGothic" FontWeight="SemiBold"
                        Style="{StaticResource TextBlockBottomStyle}"/>
         </Grid>
+
+        <!--<Grid>
+            <developerTools:FocusTracker IsActive="True" Background="Transparent"
+                                     VerticalAlignment="Bottom" 
+                                     HorizontalAlignment="Left"/>
+        </Grid>-->
     </Grid>
 </Page>

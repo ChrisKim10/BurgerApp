@@ -5,34 +5,37 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Microsoft.Toolkit.Uwp.UI.Animations;
 
 namespace BBang
 {
     public sealed partial class MainPage : Page
     {
-        private void btnMenuHome_Click(object sender, RoutedEventArgs e)
-        {
+        const double dCrownAnimationDuration = 700;
 
+        private async void btnMenuHome_Click(object sender, RoutedEventArgs e)
+        {
+            await ImgCrown.Offset(offsetX: 0.0f, offsetY: 0.0f, duration: dCrownAnimationDuration, delay: 0).StartAsync();
         }
 
-        private void btnMenuBurger_Click(object sender, RoutedEventArgs e)
+        private async void btnMenuBurger_Click(object sender, RoutedEventArgs e)
         {
-
+            await ImgCrown.Offset(offsetX: 0.0f, offsetY: 85.0f, duration: dCrownAnimationDuration, delay: 0).StartAsync();
         }
 
-        private void btnMenuStore_Click(object sender, RoutedEventArgs e)
+        private async void btnMenuStore_Click(object sender, RoutedEventArgs e)
         {
-
+            await ImgCrown.Offset(offsetX: 0.0f, offsetY: 180.0f, duration: dCrownAnimationDuration, delay: 0).StartAsync();
         }
 
-        private void btnMenuEvent_Click(object sender, RoutedEventArgs e)
+        private async void btnMenuEvent_Click(object sender, RoutedEventArgs e)
         {
-
+            await ImgCrown.Offset(offsetX: 0.0f, offsetY: 274.0f, duration: dCrownAnimationDuration, delay: 0).StartAsync();
         }
 
-        private void btnMenuDelivery_Click(object sender, RoutedEventArgs e)
+        private async void btnMenuDelivery_Click(object sender, RoutedEventArgs e)
         {
-
+            await ImgCrown.Offset(offsetX: 0.0f, offsetY: 370.0f, duration: dCrownAnimationDuration, delay: 0).StartAsync();
         }
     }
 }
