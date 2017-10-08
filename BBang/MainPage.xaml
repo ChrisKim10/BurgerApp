@@ -34,6 +34,7 @@
                 <ColumnDefinition Width="0.7*"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0" Background="#FFB32011">
+                <local:SubMenu></local:SubMenu>
 
             </Grid>
 

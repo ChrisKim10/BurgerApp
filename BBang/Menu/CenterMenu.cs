@@ -12,6 +12,4 @@ namespace BBang
         public int MenuWidth { get; set; }
         public int MenuHeight { get; set; }
     }
-
-
 }

@@ -19,5 +19,15 @@ namespace BBang
             new CenterMenu() { MenuPath = Common.ImageMenuPath + "gnb_04.png", MenuWidth = 110, MenuHeight = 89 },
             new CenterMenu() { MenuPath = Common.ImageMenuPath + "gnb_05.png", MenuWidth = 110, MenuHeight = 110 },
         };
+
+        public List<LeftMenu> listLeftMenu = new List<LeftMenu>()
+        {
+            new LeftMenu() { Name = "BurgerMenu"},
+            new LeftMenu() { Name = "WhopperMenu"},
+            new LeftMenu() { Name = "GarlicSteakMenu"},
+            new LeftMenu() { Name = "BeefChickenMenu"},
+        };
+
+
     }
 }
