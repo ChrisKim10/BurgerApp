@@ -60,11 +60,11 @@
         <StackPanel>
             <Button x:Name="MainMenu" Margin="0,0,0,0" Template="{StaticResource MyButton}">
             </Button>
-            <Button x:Name="btnMenu1" Margin="24,0,0,0" Template="{StaticResource MyButton}">
+            <Button x:Name="btnMenu1" Margin="32,0,0,0" Template="{StaticResource MyButton}">
             </Button>
-            <Button x:Name="btnMenu2" Margin="24,0,0,0" Template="{StaticResource MyButton}">
+            <Button x:Name="btnMenu2" Margin="32,0,0,0" Template="{StaticResource MyButton}">
             </Button>
-            <Button x:Name="btnMenu3" Margin="24,0,0,0" Template="{StaticResource MyButton}">
+            <Button x:Name="btnMenu3" Margin="32,0,0,0" Template="{StaticResource MyButton}">
             </Button>
         </StackPanel>
 

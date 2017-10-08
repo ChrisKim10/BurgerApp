@@ -34,12 +34,12 @@
                 <ColumnDefinition Width="0.7*"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0" Background="#FFB32011">
-                <local:SubMenu></local:SubMenu>
+                <local:SubMenu Margin="0,24,0,0" HorizontalAlignment="Center"></local:SubMenu>
 
             </Grid>
 
-            <Grid Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" Background="Transparent">
-                <StackPanel HorizontalAlignment="Left" Margin="-55,0,0,0">
+            <Grid Grid.Column="1" Grid.ColumnSpan="2" Background="Transparent">
+                <StackPanel HorizontalAlignment="Left" Margin="-55,80,0,0" VerticalAlignment="Top">
                     <Image Source="/Assets/mainmenu/gnb_00.png" Width="110"></Image>
                     <Button x:Name="btnMenuHome"  Width="110" Height="79" Margin="0,-2,0,0" Padding="0" BorderThickness="0"
                         Click="btnMenuHome_Click">
