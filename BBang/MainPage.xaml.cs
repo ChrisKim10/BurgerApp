@@ -68,6 +68,7 @@ namespace BBang
 
             gridDetailView.DataContext = burger;
             NutrientControl.SetData(burger.NutrientInfo);
+            SetCategoryBurgerList(burger);
 
             HamburgMenuToggleView(true);
 
@@ -86,6 +87,33 @@ namespace BBang
                 gridDetailView.Visibility = Visibility.Collapsed;
                 gridGroupView.Visibility = Visibility.Visible;
             }
+        }
+
+        private void SetCategoryBurgerList(Burger burger)
+        {
+            List<Burger> lstBugger = BurgerDataModel.Items.Where(x => x.Catergory == burger.Catergory).ToList() as List<Burger>;
+            lvCatergoryBurger.ItemsSource = lstBugger;
+        }
+
+        private void lvCatergoryBurger_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int index = lvCatergoryBurger.SelectedIndex;
+
+            if (index == -1)
+                return;
+
+            if (!isFirstRun)
+            {
+                //이상하네 원래 -1로 시작되어야 하는데
+                lvCatergoryBurger.SelectedIndex = -1;
+                isFirstRun = true;
+                return;
+            }
+
+            Burger burger = ((GridView)sender).SelectedItem as Burger;
+
+            gridDetailView.DataContext = burger;
+            NutrientControl.SetData(burger.NutrientInfo);
         }
     }
 }

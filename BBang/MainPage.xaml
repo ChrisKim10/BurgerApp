@@ -79,7 +79,7 @@
                 </Image>
             </Grid>
 
-            <Grid x:Name="gridGroupView" Grid.Column="1" Margin="100,50,50,50" Visibility="Visible">
+            <Grid x:Name="gridGroupView" Grid.Column="1" Margin="100,50,50,50" Visibility="Collapsed">
                 <Image Margin="12,0,0,0" Source="/Assets/Title/main_title_burger1.jpg" Stretch="None" VerticalAlignment="Top" HorizontalAlignment="Left"/>
                 <GridView x:Name="gvBurger" ItemsSource="{Binding Source={StaticResource BurgerCVS}}" Margin="0,40,0,0"
                       SelectionChanged="gridViewBurger_SelectionChanged"
@@ -109,8 +109,12 @@
                 </GridView>
             </Grid>
 
-            <Grid x:Name="gridDetailView" Grid.Column="1" Margin="100,50, 100,50" Visibility="Collapsed">
-                <StackPanel>
+            <Grid x:Name="gridDetailView" Grid.Column="1" Margin="100,50,20,50" Visibility="Visible">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="200"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
                     <TextBlock x:Name="tbTitleEN" Text="{Binding NameEN}" 
                                    FontSize="40" FontFamily="Segoe UI" FontWeight="Bold"
                                    RenderTransform="{StaticResource FontStretchCondensed3}"/>
@@ -145,6 +149,28 @@
                         <Image Source="{Binding ImageLargePath}" Stretch="None"/>
                     </Grid>
                 </StackPanel>
+                <Grid Grid.Column="1">
+                    <TextBlock Text="다른메뉴보기 ▶" Margin="48,0,0,0"/>
+                    <GridView x:Name="lvCatergoryBurger" Margin="0,32,0,0"
+                              HorizontalAlignment="Center" Width="160" SelectionMode="Single"
+                              ItemContainerStyle="{StaticResource GridViewTransparentItemStyle}" Style="{StaticResource GridViewBurgerKingStyle}"
+                              ScrollViewer.VerticalScrollMode="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto"
+                              SelectionChanged="lvCatergoryBurger_SelectionChanged">
+                        <!--<GridView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </GridView.ItemsPanel>-->
+                        <GridView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Width="122" Height="145" Margin="0,-10,0,0">
+                                    <Image Source="{Binding ImagePath}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </GridView.ItemTemplate>
+                    </GridView>
+                </Grid>
+
             </Grid>
             
             <!--<developerTools:AlignmentGrid Grid.ColumnSpan="2" Opacity="0.1"
