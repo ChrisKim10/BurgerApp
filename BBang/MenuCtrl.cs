@@ -11,6 +11,7 @@ namespace BBang
 {
     public sealed partial class MainPage : Page
     {
+
         const double dCrownAnimationDuration = 700;
 
         private async void btnMenuHome_Click(object sender, RoutedEventArgs e)
@@ -20,6 +21,7 @@ namespace BBang
 
         private async void btnMenuBurger_Click(object sender, RoutedEventArgs e)
         {
+            HamburgMenuToggleView(false);
             await ImgCrown.Offset(offsetX: 0.0f, offsetY: 85.0f, duration: dCrownAnimationDuration, delay: 0).StartAsync();
         }
 

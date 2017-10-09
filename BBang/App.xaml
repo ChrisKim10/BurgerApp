@@ -6,6 +6,14 @@
     RequestedTheme="Dark">
 
     <Application.Resources>
+        <ScaleTransform x:Key="FontStretchCondensed" ScaleX="0.9"/>
+        <ScaleTransform x:Key="FontStretchCondensed2" ScaleX="0.8"/>
+        <ScaleTransform x:Key="FontStretchCondensed3" ScaleX="0.7"/>
+        <Style x:Key="TextBlockStretchStyle" TargetType="TextBlock">
+            <Setter Property="RenderTransform" Value="{StaticResource FontStretchCondensed}" />
+        </Style>
+
+
         <!--https://docs.microsoft.com/ko-kr/windows/uwp/controls-and-patterns/listview-item-templates-->
         <Style x:Name="GridViewTransparentItemStyle" TargetType="GridViewItem" >
             <Setter Property="Template">

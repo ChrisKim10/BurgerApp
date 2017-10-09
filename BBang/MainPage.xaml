@@ -11,7 +11,8 @@
     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
     xmlns:developerTools="using:Microsoft.Toolkit.Uwp.DeveloperTools"
     xmlns:data="using:BBang.Model"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    FontFamily="NanumBarunGothic">
 
     <Page.Resources>
         <CollectionViewSource x:Name="BurgerCVS"  IsSourceGrouped="True" />
@@ -35,8 +36,8 @@
 
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.3*"/>
-                <ColumnDefinition Width="0.7*"/>
+                <ColumnDefinition Width="0.4*"/>
+                <ColumnDefinition Width="0.6*"/>
             </Grid.ColumnDefinitions>
 
             <Grid Grid.Column="0" Background="#FFB32011">
@@ -78,18 +79,9 @@
                 </Image>
             </Grid>
 
-            <Grid Grid.Column="1" Margin="100,50, 100,50">
-                <controls:DropShadowPanel BlurRadius="8"
-                                      ShadowOpacity="0.7"
-                                      OffsetX="2" OffsetY="2"
-                                      Color="Black"
-                                      VerticalAlignment="Top" HorizontalAlignment="Left">
-                    <TextBlock FontWeight="Bold" FontSize="48" FontFamily="consolas" Foreground="GhostWhite">
-                    <Run Text="BURGER"/>
-                    <Run Text="버거" FontSize="24" FontWeight="Light"/>
-                    </TextBlock>
-                </controls:DropShadowPanel>
-                <GridView x:Name="gridViewBurger" ItemsSource="{Binding Source={StaticResource BurgerCVS}}" Margin="0,60,0,0"
+            <Grid x:Name="gridGroupView" Grid.Column="1" Margin="100,50,50,50" Visibility="Visible">
+                <Image Margin="12,0,0,0" Source="/Assets/Title/main_title_burger1.jpg" Stretch="None" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                <GridView x:Name="gvBurger" ItemsSource="{Binding Source={StaticResource BurgerCVS}}" Margin="0,40,0,0"
                       SelectionChanged="gridViewBurger_SelectionChanged"
                       SelectionMode="Single"
                       ItemContainerStyle="{StaticResource GridViewTransparentItemStyle}" Style="{StaticResource GridViewBurgerKingStyle}">
@@ -105,8 +97,8 @@
                             <GroupStyle.HeaderTemplate>
                                 <DataTemplate x:DataType="data:GroupInfoList">
                                     <Grid Margin="0,20,0,0">
-                                        <TextBlock Margin="0,0,0,0" FontFamily="Calibri" FontSize="18" FontWeight="Bold" 
-                                               Foreground="WhiteSmoke">
+                                        <TextBlock Margin="0,0,0,0" FontFamily="Calibri" FontSize="19" FontWeight="Bold" 
+                                               Foreground="WhiteSmoke" RenderTransform="{StaticResource FontStretchCondensed}">
                                         <Run Text="{x:Bind Key}" />
                                         </TextBlock>
                                     </Grid>
@@ -117,6 +109,42 @@
                     </GridView.GroupStyle>
                 </GridView>
             </Grid>
+
+            <Grid x:Name="gridDetailView" Grid.Column="1" Margin="100,50, 100,50" Visibility="Collapsed">
+                <StackPanel>
+                    <TextBlock x:Name="tbTitleEN" Text="{Binding NameEN}" 
+                                   FontSize="40" FontFamily="Segoe UI" FontWeight="Bold"
+                                   RenderTransform="{StaticResource FontStretchCondensed3}"/>
+                    <TextBlock x:Name="tbTitleKR" Text="{Binding NameKR}" Margin="0,-2,0,0"
+                            FontSize="26" FontFamily="NanumBarunGothic"
+                            Style="{StaticResource TextBlockStretchStyle}"/>
+
+                    <MenuFlyoutSeparator Padding="0" Margin="0,4,0,6"/>
+
+                    <TextBlock x:Name="tbDescription"  Margin="0,0,0,0"
+                               Text="{Binding Description}" TextWrapping="Wrap"
+                               FontSize="14"/>
+
+                    <TextBlock x:Name="tbSetMenu" Margin="0,12,0,0">
+                        <Run Text="{Binding IsSet}"/>
+                        <Run Text=" ￦ "/>
+                        <Run Text="{Binding Price}" FontSize="32" FontWeight="Bold" FontFamily="Segoe UI"/>
+                    </TextBlock>
+                    <Grid HorizontalAlignment="Left">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="74"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0" Margin="0,16,0,0" Orientation="Horizontal">
+                            <TextBlock Text="&#xECC8;" FontFamily="Segoe MDL2 Assets" Margin="0,2,3,0"/>
+                            <TextBlock Text="영양정보"  FontWeight="SemiBold"></TextBlock>
+                        </StackPanel>
+                        
+                        <local:BoderGrid x:Name="NutrientControl" Grid.Column="1" Margin="8,0,8,0"></local:BoderGrid>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+            
             <!--<developerTools:AlignmentGrid Grid.ColumnSpan="2" Opacity="0.1"
                                           LineBrush="Black"
                                           HorizontalStep="20"
@@ -124,8 +152,8 @@
         </Grid>
         <Grid Grid.Row="1" Background="#222222">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.3*"/>
-                <ColumnDefinition Width="0.7*"/>
+                <ColumnDefinition Width="0.4*"/>
+                <ColumnDefinition Width="0.6*"/>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <TextBlock Text="고객문의" Style="{StaticResource TextBlockBottomStyle}"></TextBlock>

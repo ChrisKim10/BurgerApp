@@ -20,6 +20,8 @@ namespace BBang
 {
     public sealed partial class MainPage : Page
     {
+        private bool isFirstRun = false; //그룹리스트가 selectedIndex = 0 으로 시작되어 초기화면을 제어하기 위해
+
         public DataModel BurgerDataModel { get; }
 
         public MainPage()
@@ -49,13 +51,41 @@ namespace BBang
 
         private void gridViewBurger_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            int index = gridViewBurger.SelectedIndex;
+            int index = gvBurger.SelectedIndex;
 
-            if (index < 0)
+            if (index == -1)
                 return;
+
+            if (!isFirstRun)
+            {
+                //이상하네 원래 -1로 시작되어야 하는데
+                gvBurger.SelectedIndex = -1;
+                isFirstRun = true;
+                return;
+            }
 
             Burger burger = ((GridView)sender).SelectedItem as Burger;
 
+            gridDetailView.DataContext = burger;
+            NutrientControl.SetData(burger.NutrientInfo);
+
+            HamburgMenuToggleView(true);
+
+            gvBurger.SelectedIndex = -1;
+        }
+
+        private void HamburgMenuToggleView(bool isDetail)
+        {
+            if(isDetail)
+            {
+                gridGroupView.Visibility = Visibility.Collapsed;
+                gridDetailView.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                gridDetailView.Visibility = Visibility.Collapsed;
+                gridGroupView.Visibility = Visibility.Visible;
+            }
         }
     }
 }
