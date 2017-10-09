@@ -104,7 +104,6 @@
                                     </Grid>
                                 </DataTemplate>
                             </GroupStyle.HeaderTemplate>
-
                         </GroupStyle>
                     </GridView.GroupStyle>
                 </GridView>
@@ -141,6 +140,9 @@
                         </StackPanel>
                         
                         <local:BoderGrid x:Name="NutrientControl" Grid.Column="1" Margin="8,0,8,0"></local:BoderGrid>
+                    </Grid>
+                    <Grid Width="664" Height="399" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Image Source="{Binding ImageLargePath}" Stretch="None"/>
                     </Grid>
                 </StackPanel>
             </Grid>

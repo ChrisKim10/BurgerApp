@@ -23,6 +23,7 @@ namespace BBang.Model
                 {
                     nameKR = value;
                     ImagePath = Common.ImageRootPath + nameKR + Common.ImageExt;
+                    ImageLargePath = Common.ImageRootPath + nameKR + Common.ImageLargeKey + Common.ImageExt;
                     //NotifyPropertyChanged("NameKR");
                 }
             }
@@ -143,6 +144,23 @@ namespace BBang.Model
                 {
                     imagepath = value;
                     //NotifyPropertyChanged("ImagePath");
+                }
+            }
+        }
+
+        private string imageLargePath;
+        public string ImageLargePath
+        {
+            get
+            {
+                return imageLargePath;
+            }
+            set
+            {
+                if (value != imageLargePath)
+                {
+                    imageLargePath = value;
+                    //NotifyPropertyChanged("ImageLargePath");
                 }
             }
         }

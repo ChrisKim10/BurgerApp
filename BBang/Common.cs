@@ -9,6 +9,7 @@ namespace BBang
     public class Common
     {
         public static string ImageRootPath = @"/Assets/burger/";
+        public static string ImageLargeKey = @"L";
         public static string ImageExt = @".jpg";
 
         public static string ImageMenuPath = @"/Assets/Mainmenu/";
